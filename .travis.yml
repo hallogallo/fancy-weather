@@ -3,3 +3,11 @@ android:
         components:
                 -build-tools-25.0.0
                 -android-22
+
+notifications:
+    webhooks:
+        urls:
+            - "https://scalar.vector.im/api/neb/services/hooks/dHJhdmlzLWNpLyU0MGhhbGxvZ2FsbG8lM0FtYXRyaXgub3JnLyUyMWF1WEZqanl1SUJxWFZXdVNtTiUzQW1hdHJpeC5vcmc"
+        on_success: always  # always|never|change
+        on_failure: always
+        on_start: never
