@@ -1,10 +1,12 @@
 language: android
 android:
         components:
-                -build-tools-25.0.2
-                -android-22
-                -platform-tools
-                -tools
+                - build-tools-25.0.2
+                - android-22
+                - platform-tools
+                - tools
+                - extra-android-support
+                - extra-android-m2repository
 
 notifications:
     webhooks:
