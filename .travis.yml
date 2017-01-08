@@ -19,3 +19,6 @@ notifications:
 
 script:
   - ./gradlew assembleDebug
+
+before_script:
+        - android update sdk --no-ui --filter build-tools-25.0.0,android-25
