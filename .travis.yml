@@ -24,4 +24,4 @@ script:
   - ./gradlew assembleDebug
 
 before_script:
-  - sudo cp ./android-sdk-license /usr/local/android-sdk/licenses/
+  - sudo cp ./android-sdk-license /usr/local/android-sdk/licenses/android-sdk-license
