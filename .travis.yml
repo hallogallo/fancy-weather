@@ -1,12 +1,8 @@
 language: android
 jdk: oraclejdk8
-#sudo: required
 android:
         components:
-                - build-tools-25.0.0
                 - android-25
-                - platform-tools
-                - platform-tools
                 - tools
                 - tools
                 - extra-android-support
@@ -23,5 +19,6 @@ notifications:
 script:
   - ./gradlew assembleDebug
 
-#before_script:
-#  - sudo cp ./android-sdk-license /usr/local/android-sdk/licenses/android-sdk-license
+before_script:
+  - android update sdk --no-ui --all --filter build-tools-25.0.0
+  - android update sdk --no-ui --all --filter platform-tools
