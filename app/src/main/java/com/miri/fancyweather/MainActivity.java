@@ -30,9 +30,10 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
+        //generate dummy data
+        WeatherObj dummyObj = new WeatherObj("few clouds" , "-1" , "Marzipanien");
         WeatherFragment weatherFragment = new WeatherFragment();
-        weatherFragment.setWeather("sunny" , "-1" , "Marzipanien");
+        weatherFragment.setWeather(dummyObj);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, weatherFragment).commit();
 

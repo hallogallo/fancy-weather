@@ -16,7 +16,7 @@ public class networkSocket {
         this.mContext = mContext;
     }
 
-    public weatherObj getWeather() {
+    public WeatherObj getWeather() {
         ConnectivityManager connMgr = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
