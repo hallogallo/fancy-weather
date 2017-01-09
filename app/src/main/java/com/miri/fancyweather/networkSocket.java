@@ -8,6 +8,8 @@ import android.net.NetworkInfo;
  * Created by miri on 17.12.16.
  */
 
+// http://api.openweathermap.org/data/2.5/weather?q=Berlin,de&appid=bbaed1871651e959ae40331f73061812
+
 public class networkSocket {
 
     Context mContext;
