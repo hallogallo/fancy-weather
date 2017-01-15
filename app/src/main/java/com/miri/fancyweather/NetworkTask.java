@@ -61,7 +61,7 @@ public class NetworkTask extends AsyncTask<URL, Void, WeatherObj> {
                     String weather = jsonObject.getJSONArray("weather").getJSONObject(0).getString("description");
                     double tempKelvin = jsonObject.getJSONObject("main").getDouble("temp");
                     String location = jsonObject.getString("name");
-                    String temp = Long.toString(Math.round(tempKelvin - 273.0));
+                    String temp = Long.toString(Math.round(tempKelvin - 273.15));
                     return new WeatherObj(weather, icon , temp, location);
 
                 } catch (JSONException e) {

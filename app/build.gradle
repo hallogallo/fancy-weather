@@ -28,7 +28,7 @@ dependencies {
     compile 'com.android.support:design:25.0.0'
     compile 'com.google.android.gms:play-services-appindexing:8.4.0'
     testCompile 'junit:junit:4.12'
-    testCompile 'org.mock-server:mockserver-netty:3.10.4'
     testCompile 'org.mockito:mockito-core:2.6.2'
     testCompile 'com.sun.net.httpserver:http:20070405'
+    testCompile 'org.mock-server:mockserver-netty:3.10.4'
 }
