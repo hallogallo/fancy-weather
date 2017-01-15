@@ -11,8 +11,9 @@ public class WeatherObjTest {
 
     @Test
     public void testWeatherObj() throws Exception {
-        WeatherObj TestWeatherObj = new WeatherObj("clear sky" , "5" , "Berlin");
+        WeatherObj TestWeatherObj = new WeatherObj("clear sky" , "11d" , "5" , "Berlin");
         assertEquals(TestWeatherObj.getWeather() , "clear sky");
+        assertEquals(TestWeatherObj.getIcon() , "11d");
         assertEquals(TestWeatherObj.getTemperature() , "5");
         assertEquals(TestWeatherObj.getLocation() , "Berlin");
     }
