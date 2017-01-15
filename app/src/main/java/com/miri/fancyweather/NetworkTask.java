@@ -55,12 +55,14 @@ public class NetworkTask extends AsyncTask<URL, Void, WeatherObj> {
 
                 try {
 
+                    //parse answer to JSON and extract necessary fields
                     JSONObject jsonObject = new JSONObject(responseBuilder.toString());
+                    String icon = jsonObject.getJSONArray("weather").getJSONObject(0).getString("icon");
                     String weather = jsonObject.getJSONArray("weather").getJSONObject(0).getString("description");
                     double tempKelvin = jsonObject.getJSONObject("main").getDouble("temp");
                     String location = jsonObject.getString("name");
                     String temp = Long.toString(Math.round(tempKelvin - 273.0));
-                    return new WeatherObj(weather, temp, location);
+                    return new WeatherObj(weather, icon , temp, location);
 
                 } catch (JSONException e) {
                     e.printStackTrace();

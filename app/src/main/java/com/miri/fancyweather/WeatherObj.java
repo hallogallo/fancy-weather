@@ -6,16 +6,21 @@ package com.miri.fancyweather;
 
 public class WeatherObj {
 
-    private final String weather , temperature, location;
+    private final String weather , icon , temperature, location;
 
-    public WeatherObj(String weather , String temperature , String location) {
+    public WeatherObj(String weather , String icon ,  String temperature , String location) {
         this.weather = weather;
+        this.icon = icon;
         this.temperature = temperature;
         this.location = location;
     }
 
     public String getWeather() {
         return weather;
+    }
+
+    public String getIcon() {
+        return icon;
     }
 
     public String getTemperature() {

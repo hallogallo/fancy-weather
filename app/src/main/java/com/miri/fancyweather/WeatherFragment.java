@@ -16,11 +16,12 @@ import android.widget.TextView;
  */
 
 public class WeatherFragment extends Fragment {
-    private String location , temperature , weather;
+    private String location , icon , temperature , weather;
 
     //refresh weather data
     public void setWeather(WeatherObj weatherObj) {
         this.weather = weatherObj.getWeather();
+        this.icon = weatherObj.getIcon();
         this.temperature = weatherObj.getTemperature();
         this.location = weatherObj.getLocation();
     }
@@ -33,36 +34,33 @@ public class WeatherFragment extends Fragment {
         Drawable image;
 
         //choose which image should be displayed, dependent on the weather description
-        switch(weather) {
-            case "clear sky" :
+        switch(icon) {
+            case "01d" :
+            case "01n" :
                 image = getResources().getDrawable(R.drawable.sonne);
                 break;
-            case "few clouds" :
+            case "02d" :
+            case "02n" :
                 image = getResources().getDrawable(R.drawable.sonnemitwolken);
                 break;
-            case "scattered clouds" :
+            case "03d" :
+            case "03n" :
+            case "04d" :
+            case "04n" :
+            case "50d" :
                 image = getResources().getDrawable(R.drawable.wolke);
                 break;
-            case "broken clouds" :
-                image = getResources().getDrawable(R.drawable.wolke);
-                break;
-            case "shower rain" :
+            case "09d" :
                 image = getResources().getDrawable(R.drawable.regen);
                 break;
-            case "rain" :
-                image = getResources().getDrawable(R.drawable.regen);
-                break;
-            case "thunderstorm" :
+            case "11d" :
                 image = getResources().getDrawable(R.drawable.jewitta);
                 break;
-            case "light snow" :
+            case "13d" :
                 image = getResources().getDrawable(R.drawable.schnee);
                 break;
-            case "snow" :
-                image = getResources().getDrawable(R.drawable.schnee);
-                break;
-            case "mist" :
-                image = getResources().getDrawable(R.drawable.wolke);
+            case "10d" :
+                image = getResources().getDrawable(R.drawable.sonnemitregen);
                 break;
             default:
                 image = null;

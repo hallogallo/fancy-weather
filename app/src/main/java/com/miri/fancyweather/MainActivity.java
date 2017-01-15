@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity
     public void setWeather(WeatherFragment weatherFragment) {
 
         WeatherObj weatherObj;
-        WeatherObj errorObj = new WeatherObj("", "", "");
+        WeatherObj errorObj = new WeatherObj("", "", "" , "");
 
         try {
 
