@@ -48,18 +48,23 @@ public class WeatherFragment extends Fragment {
             case "04d" :
             case "04n" :
             case "50d" :
+            case "50n" :
                 image = getResources().getDrawable(R.drawable.wolke);
                 break;
             case "09d" :
+            case "09n" :
                 image = getResources().getDrawable(R.drawable.regen);
                 break;
             case "11d" :
+            case "11n" :
                 image = getResources().getDrawable(R.drawable.jewitta);
                 break;
             case "13d" :
+            case "13n" :
                 image = getResources().getDrawable(R.drawable.schnee);
                 break;
             case "10d" :
+            case "10n" :
                 image = getResources().getDrawable(R.drawable.sonnemitregen);
                 break;
             default:
