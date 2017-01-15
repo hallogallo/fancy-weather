@@ -5,7 +5,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,18 +14,18 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.text.DecimalFormat;
 
 /**
  * Created by miri on 17.12.16.
  */
 
-// http://api.openweathermap.org/data/2.5/weather?q=Berlin,de&appid=bbaed1871651e959ae40331f73061812
+//This class creates a new background thread in which the network request is executed
 
 public class NetworkTask extends AsyncTask<URL, Void, WeatherObj> {
 
     Context mContext;
 
+    //Context is needed in order to use the system connectivity service
     public NetworkTask(Context mContext) {
         this.mContext = mContext;
     }
@@ -54,7 +53,6 @@ public class NetworkTask extends AsyncTask<URL, Void, WeatherObj> {
                     responseBuilder.append(inputChunk);
                 }
 
-
                 try {
 
                     JSONObject jsonObject = new JSONObject(responseBuilder.toString());
@@ -66,10 +64,8 @@ public class NetworkTask extends AsyncTask<URL, Void, WeatherObj> {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    String blub = responseBuilder.toString();
-                    return new WeatherObj("JSON error", "", blub);
+                    return null;
                 }
-
 
             } catch (IOException e) {
                 e.printStackTrace();

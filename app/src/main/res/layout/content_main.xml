@@ -14,10 +14,18 @@
     tools:showIn="@layout/app_bar_main"
     tools:context="com.miri.fancyweather.MainActivity">
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swiperefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/fragment_container"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

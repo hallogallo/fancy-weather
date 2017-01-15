@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,36 +17,48 @@ import java.util.concurrent.ExecutionException;
 
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-        private String apiKey = "bbaed1871651e959ae40331f73061812";
+        implements NavigationView.OnNavigationItemSelectedListener , SwipeRefreshLayout.OnRefreshListener {
+
+        private SwipeRefreshLayout mSwipeRefreshLayout;
+        private WeatherFragment weatherFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //set up navigation drawer layout and initialize it
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //create weather fragment and put it into frame
 
-        WeatherFragment weatherFragment = new WeatherFragment();
+        weatherFragment = new WeatherFragment();
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, weatherFragment).commit();
 
+        //get weather data so user does not have to refresh
+
         this.setWeather(weatherFragment);
+
+        //tell the swipeRefreshLayout that this activity is responsive for refreshing
+
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
 
 
     }
 
+    //when back is pressed, close drawer if opened, else close app
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -57,6 +70,7 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    //set up navigation drawer actions, at the moment nothing is implemented yet
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -108,4 +122,9 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    @Override
+    public void onRefresh() {
+        setWeather(weatherFragment);
+        mSwipeRefreshLayout.setRefreshing(false); //tell the swipe refresh layout we're done
+    }
 }

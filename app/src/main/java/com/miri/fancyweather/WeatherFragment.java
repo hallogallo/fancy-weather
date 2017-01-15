@@ -18,6 +18,7 @@ import android.widget.TextView;
 public class WeatherFragment extends Fragment {
     private String location , temperature , weather;
 
+    //refresh weather data
     public void setWeather(WeatherObj weatherObj) {
         this.weather = weatherObj.getWeather();
         this.temperature = weatherObj.getTemperature();
@@ -30,6 +31,8 @@ public class WeatherFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View weatherView = inflater.inflate(R.layout.weather_view, container, false);
         Drawable image;
+
+        //choose which image should be displayed, dependent on the weather description
         switch(weather) {
             case "clear sky" :
                 image = getResources().getDrawable(R.drawable.sonne);
@@ -52,6 +55,9 @@ public class WeatherFragment extends Fragment {
             case "thunderstorm" :
                 image = getResources().getDrawable(R.drawable.jewitta);
                 break;
+            case "light snow" :
+                image = getResources().getDrawable(R.drawable.schnee);
+                break;
             case "snow" :
                 image = getResources().getDrawable(R.drawable.schnee);
                 break;
@@ -63,8 +69,11 @@ public class WeatherFragment extends Fragment {
                 break;
         }
         if(image != null) {
+            //load image into image field
             ((ImageView) weatherView.findViewById(R.id.weatherPic)).setImageDrawable(image);
         }
+
+        //load text data into text fields
         ((TextView) weatherView.findViewById(R.id.weatherText)).setText(weather);
         ((TextView) weatherView.findViewById(R.id.temperature)).setText(temperature + "°C");
         ((TextView) weatherView.findViewById(R.id.locationName)).setText(location);
