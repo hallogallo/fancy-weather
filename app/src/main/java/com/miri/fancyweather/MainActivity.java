@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , SwipeRefreshLayout.OnRefreshListener {
 
         private SwipeRefreshLayout mSwipeRefreshLayout;
-        private WeatherFragment weatherFragment;
+        //private WeatherFragment weatherFragment;
 
     /**
      * executed when activity is created
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity
 
         //create weather fragment and put it into frame
 
-        weatherFragment = new WeatherFragment();
+        WeatherFragment weatherFragment = new WeatherFragment();
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, weatherFragment).commit();
@@ -137,7 +137,10 @@ public class MainActivity extends AppCompatActivity
      */
     @Override
     public void onRefresh() {
-        setWeather(weatherFragment);
+        WeatherFragment weatherFragmentNew = new WeatherFragment();
         mSwipeRefreshLayout.setRefreshing(false); //tell the swipe refresh layout we're done
+        setWeather(weatherFragmentNew);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, weatherFragmentNew).commit();
     }
 }
