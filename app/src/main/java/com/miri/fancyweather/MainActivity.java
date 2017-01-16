@@ -22,6 +22,9 @@ public class MainActivity extends AppCompatActivity
         private SwipeRefreshLayout mSwipeRefreshLayout;
         private WeatherFragment weatherFragment;
 
+    /**
+     * executed when activity is created
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -58,7 +61,9 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    //when back is pressed, close drawer if opened, else close app
+    /**
+     *  when back is pressed, close drawer if opened, else close app
+     */
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -70,7 +75,9 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    //set up navigation drawer actions, at the moment nothing is implemented yet
+    /**
+     *  set up navigation drawer actions, at the moment nothing is implemented yet
+     */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -88,7 +95,10 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    //get weather data from OpenWeatherMap API and put them into weatherView
+    /**
+     * get weather data from OpenWeatherMap API and put them into weatherView
+     * @param weatherFragment
+     */
     public void setWeather(WeatherFragment weatherFragment) {
 
         WeatherObj weatherObj;
@@ -122,6 +132,9 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Is executed when user perform a swipe down gesture
+     */
     @Override
     public void onRefresh() {
         setWeather(weatherFragment);

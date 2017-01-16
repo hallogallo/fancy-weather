@@ -12,13 +12,17 @@ import android.widget.TextView;
 
 
 /**
- * Created by miri on 04.12.16.
+ * @author Miriam Hüpper
+ * Created on 04.12.16.
  */
 
 public class WeatherFragment extends Fragment {
     private String location , icon , temperature , weather;
 
-    //refresh weather data
+    /**
+     * Refresh weather Data
+     * @param weatherObj: weather object given by NetworkTask
+     */
     public void setWeather(WeatherObj weatherObj) {
         this.weather = weatherObj.getWeather();
         this.icon = weatherObj.getIcon();
@@ -26,7 +30,13 @@ public class WeatherFragment extends Fragment {
         this.location = weatherObj.getLocation();
     }
 
-
+    /**
+     *
+     * @param inflater: Layout inflater (given automatically by Main activity)
+     * @param container: Container to contain weather view
+     * @param savedInstanceState: (given automatically by Main activity)
+     * @return View that represents the weather fragment
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
